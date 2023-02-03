@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="add text-center">
+        <div class="mb-4 form-floating">
+            <input #inputFirstName type="text" class="form-control" placeholder="First Name" id="firstName" />
+            <label for="firstName">First Name</label>
+        </div>
+        <div class="form-floating mb-4">
+            <input #inputLastName type="text" placeholder="Last Name" class="form-control" id="lastName" />
+            <label for="lastName">Last Name</label>
+        </div>
+        <div class="form-floating mb-4">
+            <input #inputMobile type="text" placeholder="Mobile" class="form-control" id="mobile"/>
+            <label for="mobile">Mobile</label>
+        </div>
+        <div class="form-floating mb-4">
+            <input #inputEmail type="text" placeholder="Email" class="form-control" id="email"/>
+            <label for="email">Email</label>
+        </div>
+        <div class="form-floating mb-4">
+            <input #inputNationalID type="text" placeholder="NationalID" class="form-control" id="nationalId"/>
+            <label for="nationalId">NationalID</label>
+        </div>
+        <div class="form-floating mb-4">
+            <input #inputAge type="text" placeholder="Age" class="form-control" id="age"/>
+            <label for="age">Age</label>
+        </div>
+        <button class="btn btn-primary btn-block mb-4" routerLink="/home"
+            (click)="add(inputFirstName.value,inputLastName.value,inputMobile.value,inputEmail.value,inputNationalID.value,+inputAge.value )">
+            Add</button>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>NationalID</th>
+        <th>Age</th>
+        <th> </th>
+        <th> </th>
+    </thead>
+    <tr *ngFor="let item of students; let currentIndex=index;">
+        <th><a routerLink="/detials/{{item.ID}}">{{item.ID}} </a></th>
+        <th>{{item.Name}}</th>
+        <th>{{item.Mobile}}</th>
+        <th>{{item.Email}}</th>
+        <th>{{item.NationalID}}</th>
+        <th>{{item.Age}}</th>
+        <th><button (click)="delete(currentIndex)" class="btn btn-danger btn-block">DELETE</button></th>
+        <th><button routerLink='/edit/{{item.ID}}' class="btn btn-primary btn-block">EDIT</button></th>
+    </tr>
+</table>
