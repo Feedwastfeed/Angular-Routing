@@ -1,31 +1,102 @@
 <div class="row justify-content-center">
-    <div class="add text-center">
-        <div class="mb-4 form-floating">
-            <input #inputFirstName type="text" class="form-control" placeholder="First Name" id="firstName" />
+    <div class="add" [formGroup]="addForm">
+
+        <div class="mb-4 form-floating form-group">
+            <input formControlName="FirstName" type="text" [class.is-valid]="!addForm.controls['FirstName'].errors"
+                [class.is-invalid]="addForm.controls['FirstName'].errors" aria-describedby="firstNameHelp"
+                class="form-control" placeholder="First Name" id="firstName" />
             <label for="firstName">First Name</label>
+            <div class="text-danger" *ngIf="addForm.controls['FirstName'].errors">
+                <small id="firstNameHelp" *ngIf="addForm.controls['FirstName'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="firstNameHelp" *ngIf="addForm.controls['FirstName'].hasError('pattern')"
+                    class="form-text text-danger">Invalid Name </small>
+                <small id="firstNameHelp" *ngIf="addForm.controls['FirstName'].hasError('minlength')"
+                    class="form-text text-danger">Min Length is 3</small>
+                <small id="firstNameHelp" *ngIf="addForm.controls['FirstName'].hasError('maxlength')"
+                    class="form-text text-danger">Max Length is 20</small>
+            </div>
         </div>
-        <div class="form-floating mb-4">
-            <input #inputLastName type="text" placeholder="Last Name" class="form-control" id="lastName" />
+        <div class="form-floating mb-4 form-group">
+            <input formControlName="LastName" type="text" placeholder="Last Name" class="form-control"
+                [class.is-invalid]="addForm.controls['LastName'].errors" aria-describedby="lastNameHelp"
+                [class.is-valid]="!addForm.controls['LastName'].errors" id="lastName" />
             <label for="lastName">Last Name</label>
+            <div class="text-danger" *ngIf="addForm.controls['LastName'].errors">
+                <small id="lastNameHelp" *ngIf="addForm.controls['LastName'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="lastNameHelp" *ngIf="addForm.controls['LastName'].hasError('pattern')"
+                    class="form-text text-danger">Invalid Name </small>
+                <small id="lastNameHelp" *ngIf="addForm.controls['LastName'].hasError('minlength')"
+                    class="form-text text-danger">Min Length is 3</small>
+                <small id="lastNameHelp" *ngIf="addForm.controls['LastName'].hasError('maxlength')"
+                    class="form-text text-danger">Max Length is 20</small>
+            </div>
         </div>
-        <div class="form-floating mb-4">
-            <input #inputMobile type="text" placeholder="Mobile" class="form-control" id="mobile"/>
+        <div class="form-floating mb-4 form-group">
+            <input formControlName="Mobile" type="tel" placeholder="Mobile" class="form-control"
+                [class.is-invalid]="addForm.controls['Mobile'].errors" aria-describedby="mobileHelp"
+                [class.is-valid]="!addForm.controls['Mobile'].errors" id="mobile" />
             <label for="mobile">Mobile</label>
+            <div class="text-danger" *ngIf="addForm.controls['Mobile'].errors">
+                <small id="mobileHelp" *ngIf="addForm.controls['Mobile'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="mobileHelp" *ngIf="addForm.controls['Mobile'].hasError('pattern')"
+                    class="form-text text-danger">Invalid Mobile </small>
+                <small id="mobileHelp" *ngIf="addForm.controls['Mobile'].hasError('minlength')"
+                    class="form-text text-danger">Min Length is 11</small>
+                <small id="mobileHelp" *ngIf="addForm.controls['Mobile'].hasError('maxlength')"
+                    class="form-text text-danger">Max Length is 11</small>
+            </div>
         </div>
-        <div class="form-floating mb-4">
-            <input #inputEmail type="text" placeholder="Email" class="form-control" id="email"/>
+        <div class="form-floating mb-4 form-group">
+            <input formControlName="Email" type="text" placeholder="Email" class="form-control" id="email"
+                [class.is-invalid]="addForm.controls['Email'].errors" aria-describedby="emailHelp"
+                [class.is-valid]="!addForm.controls['Email'].errors" />
             <label for="email">Email</label>
+            <div class="text-danger" *ngIf="addForm.controls['Email'].errors">
+                <small id="emailHelp" *ngIf="addForm.controls['Email'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="emailHelp" *ngIf="addForm.controls['Email'].hasError('pattern')"
+                    class="form-text text-danger">Invalid Email</small>
+                <small id="emailHelp" *ngIf="addForm.controls['Email'].hasError('minlength')"
+                    class="form-text text-danger">Min Length is 5</small>
+                <small id="emailHelp" *ngIf="addForm.controls['Email'].hasError('maxlength')"
+                    class="form-text text-danger">Max Length is 30</small>
+            </div>
         </div>
-        <div class="form-floating mb-4">
-            <input #inputNationalID type="text" placeholder="NationalID" class="form-control" id="nationalId"/>
+        <div class="form-floating mb-4 form-group">
+            <input formControlName="NationalID" type="text" placeholder="NationalID" class="form-control"
+                id="nationalId" [class.is-invalid]="addForm.controls['NationalID'].errors"
+                aria-describedby="nationalIdHelp" [class.is-valid]="!addForm.controls['NationalID'].errors" />
             <label for="nationalId">NationalID</label>
+            <div class="text-danger" *ngIf="addForm.controls['NationalID'].errors">
+                <small id="nationalIdHelp" *ngIf="addForm.controls['NationalID'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="nationalIdHelp" *ngIf="addForm.controls['NationalID'].hasError('pattern')"
+                    class="form-text text-danger">Invalid NationaID</small>
+                <small id="nationalIdHelp" *ngIf="addForm.controls['NationalID'].hasError('minlength')"
+                    class="form-text text-danger">Min Length is 14</small>
+                <small id="nationalIdHelp" *ngIf="addForm.controls['NationalID'].hasError('maxlength')"
+                    class="form-text text-danger">Max Length is 14</small>
+            </div>
         </div>
-        <div class="form-floating mb-4">
-            <input #inputAge type="text" placeholder="Age" class="form-control" id="age"/>
+        <div class="form-floating mb-4" form-group>
+            <input formControlName="Age" type="text" placeholder="Age" class="form-control" id="age"
+                [class.is-invalid]="addForm.controls['Age'].errors" aria-describedby="ageHelp"
+                [class.is-valid]="!addForm.controls['Age'].errors" />
             <label for="age">Age</label>
+            <div class="text-danger" *ngIf="addForm.controls['Age'].errors">
+                <small id="ageHelp" *ngIf="addForm.controls['Age'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="ageHelp" *ngIf="addForm.controls['Age'].hasError('min')" class="form-text text-danger">Min
+                    Age is 15</small>
+                <small id="ageHelp" *ngIf="addForm.controls['Age'].hasError('max')" class="form-text text-danger">Max
+                    Age is 50</small>
+            </div>
         </div>
-        <button class="btn btn-primary btn-block mb-4" routerLink="/home"
-            (click)="add(inputFirstName.value,inputLastName.value,inputMobile.value,inputEmail.value,inputNationalID.value,+inputAge.value )">
-            Add</button>
+        <div class="text-center">
+            <button class="btn btn-primary btn-block mb-4" routerLink="/home" (click)="add()" [disabled]="addForm.invalid">Add</button>
+        </div>
     </div>
 </div>

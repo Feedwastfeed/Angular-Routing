@@ -1,35 +1,104 @@
 <div class="row justify-content-center">
-    <div class="add text-center">
-        <div class="mb-4 form-floating">
-            <input #inputFirstName type="text" class="form-control" placeholder="First Name" id="firstName"
-                [value]="student.FirstName" />
+    <div class="add" [formGroup]="editForm">
+
+        <div class="mb-4 form-floating form-group">
+            <input formControlName="FirstName" type="text" [class.is-valid]="!editForm.controls['FirstName'].errors"
+                [class.is-invalid]="editForm.controls['FirstName'].errors" aria-describedby="firstNameHelp"
+                class="form-control" placeholder="First Name" id="firstName" [(ngModel)]="student.FirstName" />
             <label for="firstName">First Name</label>
+            <div class="text-danger" *ngIf="editForm.controls['FirstName'].errors">
+                <small id="firstNameHelp" *ngIf="editForm.controls['FirstName'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="firstNameHelp" *ngIf="editForm.controls['FirstName'].hasError('pattern')"
+                    class="form-text text-danger">Invalid Name </small>
+                <small id="firstNameHelp" *ngIf="editForm.controls['FirstName'].hasError('minlength')"
+                    class="form-text text-danger">Min Length is 3</small>
+                <small id="firstNameHelp" *ngIf="editForm.controls['FirstName'].hasError('maxlength')"
+                    class="form-text text-danger">Max Length is 20</small>
+            </div>
         </div>
-        <div class="form-floating mb-4">
-            <input #inputLastName type="text" placeholder="Last Name" class="form-control" id="lastName"
+        <div class="form-floating mb-4 form-group">
+            <input formControlName="LastName" type="text" placeholder="Last Name" class="form-control"
+                [class.is-invalid]="editForm.controls['LastName'].errors" aria-describedby="lastNameHelp"
+                [class.is-valid]="!editForm.controls['LastName'].errors" id="lastName"
                 [(ngModel)]="student.LastName" />
             <label for="lastName">Last Name</label>
+            <div class="text-danger" *ngIf="editForm.controls['LastName'].errors">
+                <small id="lastNameHelp" *ngIf="editForm.controls['LastName'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="lastNameHelp" *ngIf="editForm.controls['LastName'].hasError('pattern')"
+                    class="form-text text-danger">Invalid Name </small>
+                <small id="lastNameHelp" *ngIf="editForm.controls['LastName'].hasError('minlength')"
+                    class="form-text text-danger">Min Length is 3</small>
+                <small id="lastNameHelp" *ngIf="editForm.controls['LastName'].hasError('maxlength')"
+                    class="form-text text-danger">Max Length is 20</small>
+            </div>
         </div>
-        <div class="form-floating mb-4">
-            <input #inputMobile type="text" placeholder="Mobile" class="form-control" id="mobile"
-                [(ngModel)]="student.Mobile" />
+        <div class="form-floating mb-4 form-group">
+            <input formControlName="Mobile" type="tel" placeholder="Mobile" class="form-control"
+                [class.is-invalid]="editForm.controls['Mobile'].errors" aria-describedby="mobileHelp"
+                [class.is-valid]="!editForm.controls['Mobile'].errors" id="mobile" [(ngModel)]="student.Mobile" />
             <label for="mobile">Mobile</label>
+            <div class="text-danger" *ngIf="editForm.controls['Mobile'].errors">
+                <small id="mobileHelp" *ngIf="editForm.controls['Mobile'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="mobileHelp" *ngIf="editForm.controls['Mobile'].hasError('pattern')"
+                    class="form-text text-danger">Invalid Mobile </small>
+                <small id="mobileHelp" *ngIf="editForm.controls['Mobile'].hasError('minlength')"
+                    class="form-text text-danger">Min Length is 11</small>
+                <small id="mobileHelp" *ngIf="editForm.controls['Mobile'].hasError('maxlength')"
+                    class="form-text text-danger">Max Length is 11</small>
+            </div>
         </div>
-        <div class="form-floating mb-4">
-            <input #inputEmail type="text" placeholder="Email" class="form-control" id="email"
-                [(ngModel)]="student.Email" />
+        <div class="form-floating mb-4 form-group">
+            <input formControlName="Email" type="text" placeholder="Email" class="form-control" id="email"
+                [class.is-invalid]="editForm.controls['Email'].errors" aria-describedby="emailHelp"
+                [class.is-valid]="!editForm.controls['Email'].errors" [(ngModel)]="student.Email" />
             <label for="email">Email</label>
+            <div class="text-danger" *ngIf="editForm.controls['Email'].errors">
+                <small id="emailHelp" *ngIf="editForm.controls['Email'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="emailHelp" *ngIf="editForm.controls['Email'].hasError('pattern')"
+                    class="form-text text-danger">Invalid Email</small>
+                <small id="emailHelp" *ngIf="editForm.controls['Email'].hasError('minlength')"
+                    class="form-text text-danger">Min Length is 5</small>
+                <small id="emailHelp" *ngIf="editForm.controls['Email'].hasError('maxlength')"
+                    class="form-text text-danger">Max Length is 30</small>
+            </div>
         </div>
-        <div class="form-floating mb-4">
-            <input #inputNationalID type="text" placeholder="NationalID" class="form-control" id="nationalId"
-                [(ngModel)]="student.NationalID" />
+        <div class="form-floating mb-4 form-group">
+            <input formControlName="NationalID" type="text" placeholder="NationalID" class="form-control"
+                id="nationalId" [class.is-invalid]="editForm.controls['NationalID'].errors"
+                [(ngModel)]="student.NationalID" aria-describedby="nationalIdHelp"
+                [class.is-valid]="!editForm.controls['NationalID'].errors" />
             <label for="nationalId">NationalID</label>
+            <div class="text-danger" *ngIf="editForm.controls['NationalID'].errors">
+                <small id="nationalIdHelp" *ngIf="editForm.controls['NationalID'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="nationalIdHelp" *ngIf="editForm.controls['NationalID'].hasError('pattern')"
+                    class="form-text text-danger">Invalid NationaID</small>
+                <small id="nationalIdHelp" *ngIf="editForm.controls['NationalID'].hasError('minlength')"
+                    class="form-text text-danger">Min Length is 14</small>
+                <small id="nationalIdHelp" *ngIf="editForm.controls['NationalID'].hasError('maxlength')"
+                    class="form-text text-danger">Max Length is 14</small>
+            </div>
         </div>
-        <div class="form-floating mb-4">
-            <input #inputAge type="text" placeholder="Age" class="form-control" id="age" [(ngModel)]="student.Age" />
+        <div class="form-floating mb-4" form-group>
+            <input formControlName="Age" type="text" placeholder="Age" class="form-control" id="age"
+                [class.is-invalid]="editForm.controls['Age'].errors" aria-describedby="ageHelp"
+                [class.is-valid]="!editForm.controls['Age'].errors" [(ngModel)]="student.Age" />
             <label for="age">Age</label>
+            <div class="text-danger" *ngIf="editForm.controls['Age'].errors">
+                <small id="ageHelp" *ngIf="editForm.controls['Age'].hasError('requrid')"
+                    class="form-text text-danger">Requrid Field</small>
+                <small id="ageHelp" *ngIf="editForm.controls['Age'].hasError('min')" class="form-text text-danger">Min
+                    Age is 15</small>
+                <small id="ageHelp" *ngIf="editForm.controls['Age'].hasError('max')" class="form-text text-danger">Max
+                    Age is 50</small>
+            </div>
         </div>
-        <button class="btn btn-primary btn-block mb-4" routerLink="/home" (click)="edit()">
-            Edit</button>
+        <div class="text-center">
+            <button class="btn btn-primary btn-block mb-4" (click)="edit()" [disabled]="editForm.invalid">Edit</button>
+        </div>
     </div>
 </div>
